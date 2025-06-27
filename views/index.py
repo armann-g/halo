@@ -1,4 +1,6 @@
 import flet as ft
+from flet.core.alignment import center
+
 
 def IndexView(page:ft.Page, params):
     def CreateAppBar():
@@ -36,14 +38,21 @@ def IndexView(page:ft.Page, params):
     answer_column = ft.Column()
     i=1
     for answer in question_data["answers"] :
-        number = ft.Text(value=i)
-        a = ft.Text(value=answer)
+        number = ft.Container(content=ft.Text(value=i,size=20),
+                              bgcolor=ft.Colors.GREY,
+                              width=25,
+                              height=25,
+                              alignment=ft.alignment.center,
+                              border_radius=15
+                              )#put thr number in a container so we can change the background colors and etc.
+        a = ft.Text(value=answer,size=20)
         row = ft.Row(controls=[number,a])#to arrange the elememts in 1 single line use row
         answer_column.controls.append(row)#controls=list
-        i+=1
+        i += 1
+        user_answer_tb = ft.TextField(label="Type here")
     page.views.append(ft.View(
         "/",
-        [appbar,question_tb,answer_column],
+        [appbar,question_tb,answer_column,user_answer_tb],
         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
 
     )
