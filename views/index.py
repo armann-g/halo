@@ -39,7 +39,7 @@ def IndexView(page:ft.Page, params):
     i=1
     for answer in question_data["answers"] :
         number = ft.Container(content=ft.Text(value=i,size=20),
-                              bgcolor=ft.Colors.GREY,
+                              bgcolor=ft.Colors.BROWN,
                               width=25,
                               height=25,
                               alignment=ft.alignment.center,
